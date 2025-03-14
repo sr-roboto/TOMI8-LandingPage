@@ -67,14 +67,12 @@ function ProductPage() {
           </div>
 
           {/* Navegacion */}
-          <div className="mt-4 flex gap-2 overflow-x-auto ">
+          <div className="mt-4 flex justify-center gap-2 overflow-x-auto">
             {productImages.map((img, idx) => (
               <button
                 key={idx}
                 className={`size-[12px] border rounded-full overflow-hidden md:size-auto md:rounded-[5px] ${
-                  selectedImage === idx
-                    ? 'border-purple-600'
-                    : 'border-[#E8E8EB]'
+                  selectedImage === idx ? 'bg-purple-600' : 'border-[#E8E8EB]'
                 }`}
                 onClick={() => setSelectedImage(idx)}
               >
@@ -89,8 +87,8 @@ function ProductPage() {
         </div>
 
         {/* Producto Info */}
-        <div className="shrink-0 text-blue-black hidden lg:block">
-          <div className="border border-[#A6A7B0] rounded-[10px] pt-[45px] pb-[20px] md:px-[20px] lg:px-[35px] lg:min-w-[460px] ">
+        <div className="shrink-0 text-blue-black  lg:block">
+          <div className="border-0 border-[#A6A7B0] lg:border rounded-[10px] pt-[45px] pb-[20px] md:px-[20px] lg:px-[35px] lg:min-w-[460px] ">
             <h1 className="text-4xl font-bold mb-6">
               TOMi8, todo en uno para la educación
             </h1>
@@ -107,7 +105,7 @@ function ProductPage() {
                   alt="Argentina flag"
                   className="w-5"
                 />
-                <span>ARG</span>
+                <span className="font-bold text-[#5800FF]">ARG</span>
               </div>
             </div>
 
