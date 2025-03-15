@@ -16,8 +16,8 @@ import tomi9 from '../assets/images/tomi-9.jpg';
 function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedStorage, setSelectedStorage] = useState('LT');
-  const [openSection, setOpenSection] = useState(null);
-
+  const [openSections, setOpenSections] = useState({});
+  console.log(openSections);
   const productImages = [
     tomi1,
     tomi2,
@@ -43,7 +43,10 @@ function ProductPage() {
   };
 
   const toggleCollapse = (section) => {
-    setOpenSection(openSection === section ? null : section);
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
   };
 
   return (
@@ -94,14 +97,15 @@ function ProductPage() {
           {/* Descripción */}
           <div className="mt-6 flex flex-col ">
             <div
-              className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
-                openSection === 'descripcion'
-                  ? 'collapse-open'
-                  : 'collapse-close'
+              className={`collapse collapse-arrow cursor-pointer bg-base-100 rounded-none border-t border-[#A6A7B0] pt-6 mb-5 ${
+                openSections['descripcion'] ? 'collapse-open' : 'collapse-close'
               }`}
-              onClick={() => toggleCollapse('descripcion')}
             >
-              <input type="radio" name="my-accordion-2" />
+              <input
+                type="radio"
+                name="my-accordion-2"
+                onClick={() => toggleCollapse('descripcion')}
+              />
               <div className="collapse-title font-medium text-md md:text-2xl">
                 Descripción
               </div>
@@ -120,13 +124,16 @@ function ProductPage() {
             </div>
             <div
               className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
-                openSection === 'especificaciones'
+                openSections['especificaciones']
                   ? 'collapse-open'
                   : 'collapse-close'
               }`}
-              onClick={() => toggleCollapse('especificaciones')}
             >
-              <input type="radio" name="my-accordion-2" />
+              <input
+                type="radio"
+                name="my-accordion-2"
+                onClick={() => toggleCollapse('especificaciones')}
+              />
               <div className="collapse-title font-medium text-lg md:text-2xl">
                 Especificaciones técnicas
               </div>
@@ -285,50 +292,177 @@ function ProductPage() {
             </div>
             <div
               className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
-                openSection === 'preguntas' ? 'collapse-open' : 'collapse-close'
+                openSections['preguntas'] ? 'collapse-open' : 'collapse-close'
               }`}
-              onClick={() => toggleCollapse('preguntas')}
             >
-              <input type="radio" name="my-accordion-2" />
+              <input
+                type="radio"
+                name="my-accordion-2"
+                onClick={() => toggleCollapse('preguntas')}
+              />
               <div className="collapse-title font-medium text-lg md:text-2xl">
                 Preguntas más frecuentes
               </div>
-              <div className="collapse-content text-base">
+              <div className="collapse-content text-base flex flex-col gap-4 pt-6">
                 <div
-                  className={`collapse collapse-plus bg-base-100 border border-base-300${
-                    openSection === 'pregunta-1'
-                      ? 'collapse-open'
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-1']
+                      ? 'collapse-open border-purple-600'
                       : 'collapse-close'
                   }`}
-                  onClick={() => toggleCollapse('pregunta-1')}
                 >
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title font-semibold">
-                    How do I create an account?
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-1')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-1'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿TOMi8 funciona como un proyector?
                   </div>
-                  <div className="collapse-content text-sm">
-                    Click the "Sign Up" button in the top right corner and
-                    follow the registration process.
+                  <div className="collapse-content text-base">
+                    ¡No! TOMi8 debe estar conectado a un medio de proyección o
+                    una pantalla para que con su tecnología infrarroja pueda
+                    convertir ese medio en una pizarra digital interactiva.
+                    TOMi8 no proyecta directamente sobre una pared.
                   </div>
                 </div>
-                <div className="collapse collapse-plus bg-base-100 border border-base-300">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title font-semibold">
-                    I forgot my password. What should I do?
+                <div
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-2']
+                      ? 'collapse-open border-purple-600'
+                      : 'collapse-close'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-2')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-2'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿Puedo conectar algún tipo de periférico como mouse,
+                    teclado, disco duro, USB, entre otros?
                   </div>
-                  <div className="collapse-content text-sm">
-                    Click on "Forgot Password" on the login page and follow the
-                    instructions sent to your email.
+                  <div className="collapse-content text-base">
+                    Sí! Gracias a su tecnología Bluetooth 4.2 y a sus puertos de
+                    conexión de USB y HDMI, es posible conectar los periféricos
+                    que se ajusten a las necesidades del usuario.
                   </div>
                 </div>
-                <div className="collapse collapse-plus bg-base-100 border border-base-300">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title font-semibold">
-                    How do I update my profile information?
+                <div
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-3']
+                      ? 'collapse-open border-purple-600'
+                      : 'collapse-close'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-3')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-3'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿Cómo funciona la “emulación de navegación a Internet sin
+                    conexión” o el “Internet sin Internet” de TOMi8?
                   </div>
-                  <div className="collapse-content text-sm">
-                    Go to "My Account" settings and select "Edit Profile" to
-                    make changes.
+                  <div className="collapse-content text-base">
+                    El dispositivo genera una red local propia que permite
+                    conectar los diferentes dispositivos a su red. Esto sirve
+                    para navegar en el contenido que TOMi8 tiene pre-cargado en
+                    su disco duro, ya sea del que tiene TOMi8 desde fábrica o
+                    aquel que el maestro haya agregado desde la sección de
+                    recursos sin conexión.
+                  </div>
+                </div>
+                <div
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-4']
+                      ? 'collapse-open border-purple-600'
+                      : 'collapse-close'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-4')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-4'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿Cuántos dispositivos de estudiantes se pueden conectar a la
+                    red local del dispositivo TOMi8?
+                  </div>
+                  <div className="collapse-content text-base">
+                    Es posible conectar simultáneamente hasta 80 dispositivos
+                    inteligentes. Los estudiantes podrán conectar sus tabletas,
+                    PC, portátiles y teléfonos inteligentes a TOMi8 para navegar
+                    en el servidor de contenido local o como puerta de enlace a
+                    Internet.
+                  </div>
+                </div>
+                <div
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-5']
+                      ? 'collapse-open border-purple-600'
+                      : 'collapse-close'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-5')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-5'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿Cuál es el rango de cobertura de TOMi8?
+                  </div>
+                  <div className="collapse-content text-base">
+                    TOMi8 dispone de dos ranuras externas para conectar
+                    extensiones con antenas opcionales para una cobertura de
+                    hasta 80 metros.
+                  </div>
+                </div>
+                <div
+                  className={`collapse collapse-plus bg-base-100 py-4 border border-[#A6A7B0] ${
+                    openSections['pregunta-6']
+                      ? 'collapse-open border-purple-600'
+                      : 'collapse-close'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-3"
+                    onClick={() => toggleCollapse('pregunta-6')}
+                  />
+                  <div
+                    className={`collapse-title font-medium text-lg ${
+                      openSections['pregunta-6'] ? 'text-purple-600' : ''
+                    }`}
+                  >
+                    ¿TOMi8 puedo conectarlo a un computador?
+                  </div>
+                  <div className="collapse-content text-base">
+                    Podrás conectarlo a un medio de proyección, pero no a un
+                    computador. Desde TOMi8 podrás realizar todos los trabajos
+                    que normalmente realizas en un computador, pero es mucho más
+                    interactivo para ti y tus estudiantes, con herramientas y
+                    funciones únicas.
                   </div>
                 </div>
               </div>
