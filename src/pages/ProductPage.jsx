@@ -15,7 +15,7 @@ import tomi9 from '../assets/images/tomi-9.jpg';
 
 function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedStorage, setSelectedStorage] = useState('STD');
+  const [selectedStorage, setSelectedStorage] = useState('LT');
 
   const productImages = [
     tomi1,
@@ -84,15 +84,58 @@ function ProductPage() {
               </button>
             ))}
           </div>
+          {/* Descripción */}
+          <div className="mt-6 flex flex-col border-t border-[#A6A7B0] pt-[25px] mb-[20px]">
+            <div className="collapse collapse-arrow bg-base-100 border border-t py-7 border-base-300">
+              <input type="radio" name="my-accordion-2" />
+              <div className="collapse-title font-medium text-[18px] md:text-[24px]">
+                Descripción
+              </div>
+              <div className="collapse-content text-sm">
+                TOMi8 es una computadora que permite convertir cualquier
+                pantalla o proyector en una superficie interactiva (conexión
+                HDMI), es portable e integra un Access Point para conectar
+                simultáneamente hasta 80 dispositivos inteligentes y navegar por
+                el servidor de contenidos local. Gracias a su tecnología de
+                reconocimiento óptico permite escanear y procesar códigos QR,
+                automatizando el llamado a lista, facilitando el acceso a
+                encuestas, cuestionarios interactivos; así como la calificación
+                automática de tests con preguntas de selección múltiple y la
+                visualización de contenido de realidad aumentada.
+              </div>
+            </div>
+            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+              <input type="radio" name="my-accordion-2" />
+              <div className="collapse-title font-semibold">
+                Especificaciones técnicas
+              </div>
+              <div className="collapse-content text-sm">
+                Click on "Forgot Password" on the login page and follow the
+                instructions sent to your email.
+              </div>
+            </div>
+            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+              <input type="radio" name="my-accordion-2" />
+              <div className="collapse-title font-semibold">
+                Preguntas más frecuentes
+              </div>
+              <div className="collapse-content text-sm">
+                Go to "My Account" settings and select "Edit Profile" to make
+                changes.
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Producto Info */}
-        <div className="shrink-0 text-blue-black  lg:block">
+        <div className="shrink-0 text-blue-black lg:block">
           <div className="border-0 border-[#A6A7B0] lg:border rounded-[10px] pt-[45px] pb-[20px] md:px-[20px] lg:px-[35px] lg:min-w-[460px] ">
             <h1 className="text-4xl font-bold mb-6">
               TOMi8, todo en uno para la educación
             </h1>
-            <div className="text-5xl font-medium">$990.000 ARS</div>
+            <div className="text-5xl font-medium">
+              {selectedStorage === 'LT' ? '$790.000 ARS' : '$990.000 ARS'}
+            </div>
             <p className="text-sm text-gray-600 mb-6">IVA Incluido</p>
             <div className="flex items-center gap-5 mb-8">
               <div className="flex items-center gap-2 rounded-lg bg-blue-100 p-1 ">
@@ -115,7 +158,7 @@ function ProductPage() {
               </h3>
               <div className="space-y-3">
                 <button
-                  className={`w-full py-3 px-4 rounded-lg border ${
+                  className={`btn-ghost cursor-pointer w-full py-3 px-4 rounded-lg border ${
                     selectedStorage === 'LT'
                       ? 'border-purple-600'
                       : 'border-gray-300'
@@ -125,7 +168,7 @@ function ProductPage() {
                   TOMi8 LT 4GB / 64GB
                 </button>
                 <button
-                  className={`w-full py-3 px-4 rounded-lg border ${
+                  className={`btn-ghost cursor-pointer w-full py-3 px-4 rounded-lg border ${
                     selectedStorage === 'STD'
                       ? 'border-purple-600'
                       : 'border-gray-300'
@@ -146,7 +189,7 @@ function ProductPage() {
                     className="h-13"
                   />
                 </div>
-                <button className="rounded-4xl min-w-[250px] md:min-w-[335px] bg-[#5800FF] text-white py-2 font-medium hover:bg-[#4600CB] transition-colors">
+                <button className="btn-ghost cursor-pointer rounded-4xl min-w-[250px] md:min-w-[335px] bg-[#5800FF] text-white py-2 font-medium hover:bg-[#4600CB] transition-colors">
                   Comprar ahora
                 </button>
               </div>
