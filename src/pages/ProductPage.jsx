@@ -16,6 +16,7 @@ import tomi9 from '../assets/images/tomi-9.jpg';
 function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedStorage, setSelectedStorage] = useState('LT');
+  const [openSection, setOpenSection] = useState(null);
 
   const productImages = [
     tomi1,
@@ -41,6 +42,10 @@ function ProductPage() {
     );
   };
 
+  const toggleCollapse = (section) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
   return (
     <section className="max-w-[1140px] mx-auto px-[15px] ">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 border-b boder-[#A6A7B0] ">
@@ -53,13 +58,13 @@ function ProductPage() {
               className="w-full h-full object-cover rounded-lg"
             />
             <button
-              className="btn btn-ghost btn-active absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
+              className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
               onClick={handlePrev}
             >
               <ChevronLeft className="w-6 h-6" color="#5801FF" />
             </button>
             <button
-              className="btn btn-ghost btn-active absolute right-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
+              className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
               onClick={handleNext}
             >
               <ChevronRight className="w-6 h-6" color="#5801FF" />
@@ -71,8 +76,10 @@ function ProductPage() {
             {productImages.map((img, idx) => (
               <button
                 key={idx}
-                className={`size-[12px] border rounded-full overflow-hidden md:size-auto md:rounded-[5px] ${
-                  selectedImage === idx ? 'bg-purple-600' : 'border-[#E8E8EB]'
+                className={`size-[12px] border rounded-full overflow-hidden md:size-auto md:rounded-md ${
+                  selectedImage === idx
+                    ? 'border-purple-600'
+                    : 'border-[#E8E8EB]'
                 }`}
                 onClick={() => setSelectedImage(idx)}
               >
@@ -85,13 +92,20 @@ function ProductPage() {
             ))}
           </div>
           {/* Descripción */}
-          <div className="mt-6 flex flex-col border-t border-[#A6A7B0] pt-[25px] mb-[20px]">
-            <div className="collapse collapse-arrow bg-base-100 border border-t py-7 border-base-300">
+          <div className="mt-6 flex flex-col ">
+            <div
+              className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
+                openSection === 'descripcion'
+                  ? 'collapse-open'
+                  : 'collapse-close'
+              }`}
+              onClick={() => toggleCollapse('descripcion')}
+            >
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-medium text-[18px] md:text-[24px]">
+              <div className="collapse-title font-medium text-md md:text-2xl">
                 Descripción
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-base">
                 TOMi8 es una computadora que permite convertir cualquier
                 pantalla o proyector en una superficie interactiva (conexión
                 HDMI), es portable e integra un Access Point para conectar
@@ -104,24 +118,219 @@ function ProductPage() {
                 visualización de contenido de realidad aumentada.
               </div>
             </div>
-            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+            <div
+              className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
+                openSection === 'especificaciones'
+                  ? 'collapse-open'
+                  : 'collapse-close'
+              }`}
+              onClick={() => toggleCollapse('especificaciones')}
+            >
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-medium text-lg md:text-2xl">
                 Especificaciones técnicas
               </div>
-              <div className="collapse-content text-sm">
-                Click on "Forgot Password" on the login page and follow the
-                instructions sent to your email.
+              <div className="collapse-content text-base">
+                <div className="flex flex-1 pt-6">
+                  <table className="flex-1 rounded-[5px] text-blue-black overflow-hidden">
+                    <tbody>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Especificaciones eléctricas
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Adaptador de corriente 5V - 6A - Consumo máximo 30
+                          vatios
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Cámara incorporada
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          13 Megapíxeles 30fps, enfoque automático
+                        </td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Pizarra interactiva incorporada
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Puntero infrarrojo de última generación basado en
+                          visión artificial
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Sistema operativo
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Android 12L
+                        </td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Puerto USB
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">1x 2.0</td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Puerto HDMI
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">HDMI 2.1</td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Procesador
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Octa core de 64 bit a 2.4 Ghz
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Memoria RAM
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          4GB LPDDR4X
+                        </td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          GPU
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          GPU de video Mali con soporte de IA y códecs de vídeo
+                          8k
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Almacenamiento
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          64GB uSD / 128GB SSD
+                        </td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Tamaño
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          107mm (diámetro) x 133mm (Altura)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Peso
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          440 gr dispositivo - 970 gr dentro de la caja,
+                          incluyendo accesorios
+                        </td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Wifi
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Chipset: RTL8821CU, USB2 0, 2,4 GHz + 5 GHz. 600 Mbps
+                          (11N: 150 Mbps, 11AC: 433 Mbps). IEEE 802.11AC…
+                          802.11b 802,11g 802.11n, WEP, WPA-PSK, WPA2-PSK,
+                          cifrado WPA/WPA2 64/128 bit.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Punto de Acceso Wifi
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          IEEE 802.11a/b/g/n/ac/ax WLAN 2.4 Ghz con velocidad de
+                          hasta 573+1201 Mbps, CPU RISC de 32 bits de alto
+                          rendimiento dedicada, externa e interna
+                        </td>
+                      </tr>
+
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Bluetooth
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">
+                          Bluetooth 4.2
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Ethernet LAN/WAN
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">NO</td>
+                      </tr>
+                      <tr className="bg-gray-200">
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Interfaz móvil 3G/4G
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">NO</td>
+                      </tr>
+                      <tr>
+                        <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                          Batería
+                        </td>
+                        <td className="py-4 px-2 md:px-3 lg:px-5">NO</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+            <div
+              className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
+                openSection === 'preguntas' ? 'collapse-open' : 'collapse-close'
+              }`}
+              onClick={() => toggleCollapse('preguntas')}
+            >
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-medium text-lg md:text-2xl">
                 Preguntas más frecuentes
               </div>
-              <div className="collapse-content text-sm">
-                Go to "My Account" settings and select "Edit Profile" to make
-                changes.
+              <div className="collapse-content text-base">
+                <div
+                  className={`collapse collapse-plus bg-base-100 border border-base-300${
+                    openSection === 'pregunta-1'
+                      ? 'collapse-open'
+                      : 'collapse-close'
+                  }`}
+                  onClick={() => toggleCollapse('pregunta-1')}
+                >
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title font-semibold">
+                    How do I create an account?
+                  </div>
+                  <div className="collapse-content text-sm">
+                    Click the "Sign Up" button in the top right corner and
+                    follow the registration process.
+                  </div>
+                </div>
+                <div className="collapse collapse-plus bg-base-100 border border-base-300">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title font-semibold">
+                    I forgot my password. What should I do?
+                  </div>
+                  <div className="collapse-content text-sm">
+                    Click on "Forgot Password" on the login page and follow the
+                    instructions sent to your email.
+                  </div>
+                </div>
+                <div className="collapse collapse-plus bg-base-100 border border-base-300">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title font-semibold">
+                    How do I update my profile information?
+                  </div>
+                  <div className="collapse-content text-sm">
+                    Go to "My Account" settings and select "Edit Profile" to
+                    make changes.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
