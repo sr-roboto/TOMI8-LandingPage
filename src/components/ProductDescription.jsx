@@ -3,7 +3,7 @@ import React from 'react';
 const ProductDescription = ({ openSections, toggleCollapse }) => {
   return (
     <div
-      className={`collapse collapse-arrow cursor-pointer bg-base-100 rounded-none border-t border-[#A6A7B0] pt-6 mb-5 ${
+      className={`collapse collapse-arrow cursor-pointer bg-base-100 rounded-none border-t border-gray-400 pt-6 mb-5 ${
         openSections['descripcion'] ? 'collapse-open' : 'collapse-close'
       }`}
     >

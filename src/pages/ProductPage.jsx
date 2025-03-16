@@ -60,8 +60,8 @@ function ProductPage() {
   };
 
   return (
-    <section className="max-w-[1140px] mx-auto px-[15px]">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 border-b boder-[#A6A7B0]">
+    <section className="max-w-[1140px] mx-auto px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 border-b border-gray-400">
         <div className="flex flex-col">
           <ImageGallery
             productImages={productImages}
@@ -80,7 +80,7 @@ function ProductPage() {
             />
           </div>
 
-          <div className="grid *:grid-cols-3 gap-2 mt-4 overflow-x-auto">
+          <div className="grid *:grid-cols-3 gap-2 mt-4 overflow-x-auto ">
             <div className="mt-6 flex flex-col order-last lg:order-none">
               <ProductDescription
                 openSections={openSections}

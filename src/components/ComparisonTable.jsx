@@ -15,8 +15,8 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
   ];
 
   return (
-    <div className="overflow-x-auto scrollbar px-4 pt-16 pb-[25px]">
-      <table className="min-w-full px-4 border-spacing-0">
+    <div className="overflow-x-auto scrollbar pt-16 pb-6">
+      <table className="min-w-full border-separate border-spacing-0">
         <thead>
           <tr>
             <th>
@@ -30,13 +30,13 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
             <th
               className={
                 selectedStorage === 'LT'
-                  ? 'border-t-2 border-l-2 border-r-2 border-purple-300 rounded-t-lg '
+                  ? 'border-t border-l border-r border-purple-300 rounded-t-lg '
                   : ''
               }
             >
               <div
                 className={`py-4 ${
-                  selectedStorage === 'LT' ? 'bg-purple-50   ' : ''
+                  selectedStorage === 'LT' ? 'bg-purple-50 rounded-t-lg' : ''
                 }`}
               >
                 <p className="text-xl font-black mb-12 ">LT</p>
@@ -46,13 +46,13 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
             <th
               className={
                 selectedStorage === 'STD'
-                  ? 'border-t-2 border-l-2 border-r-2 border-purple-300 rounded-t-lg'
+                  ? 'border-t border-l border-r border-purple-300 rounded-t-lg'
                   : ''
               }
             >
               <div
                 className={`py-4 ${
-                  selectedStorage === 'STD' ? 'bg-purple-50' : ''
+                  selectedStorage === 'STD' ? 'bg-purple-50 rounded-t-lg' : ''
                 }`}
               >
                 <p className="text-xl font-black mb-12 ">STD</p>
@@ -64,7 +64,11 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
         <tbody className="bg-gray-50">
           {comparisonData.map((row, index) => (
             <tr key={index}>
-              <td className="relative border-gray-300 border-t border-l px-4 md:w-[320px] md:p-5 overflow-hidden">
+              <td
+                className={`relative border-gray-300 border-t border-l px-4 md:w-[320px] md:p-5 overflow-hidden ${
+                  index === 0 ? 'rounded-tl-lg' : ''
+                }`}
+              >
                 <span className="font-bold max-w-[180px] inline-block">
                   {row.feature}
                 </span>
@@ -72,8 +76,8 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
               <td
                 className={`relative text-center py-5 border-t ${
                   selectedStorage === 'LT'
-                    ? 'border-l-2 border-r-2 border-purple-300 bg-purple-50'
-                    : 'border-l border-r border-gray-300'
+                    ? 'border-l border-r border-purple-300 bg-purple-50'
+                    : 'border-l border-gray-300'
                 }`}
               >
                 {typeof row.lt === 'boolean' ? (
@@ -93,8 +97,8 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
               <td
                 className={`relative text-center py-5 border-t ${
                   selectedStorage === 'STD'
-                    ? 'border-l-2 border-r-2 border-purple-300 bg-purple-50'
-                    : 'border-l border-r border-gray-300'
+                    ? 'border-l border-r border-purple-300 bg-purple-50'
+                    : ' border-r border-gray-300'
                 }`}
               >
                 {typeof row.std === 'boolean' ? (
@@ -119,14 +123,14 @@ const ComparisonTable = ({ compare, tomiLt, tomiStd, selectedStorage }) => {
             <td
               className={`h-1 ${
                 selectedStorage === 'LT'
-                  ? 'border-b-2 border-l-2 border-r-2 border-purple-300 rounded-b-lg'
-                  : 'border-b border-l border-r border-gray-300'
+                  ? 'border-b border-l border-r border-purple-300'
+                  : 'border-b border-l border-gray-300'
               }`}
             ></td>
             <td
               className={`h-1 ${
                 selectedStorage === 'STD'
-                  ? 'border-b-2 border-l-2 border-r-2 border-purple-300 rounded-b-lg'
+                  ? 'border-b border-l border-r border-purple-300'
                   : 'border-b border-r border-gray-300'
               }`}
             ></td>
