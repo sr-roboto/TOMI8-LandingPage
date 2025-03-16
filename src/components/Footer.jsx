@@ -6,8 +6,8 @@ function Footer() {
   return (
     <>
       {/* Footer */}
-      <footer className="w-full bg-gray-800 py-16">
-        <div className="container mx-auto px-4">
+      <footer className=" bg-gray-800">
+        <div className="px-3 py-8 md:px-0 md:pt-12 md:pb-8 max-w-[1110px] w-full m-auto">
           {/* Main content - logo left, navigation right */}
           <div className="flex flex-col md:flex-row justify-between mb-12">
             {/* Logo and tagline - left side */}
