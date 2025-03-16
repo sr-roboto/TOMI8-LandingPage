@@ -1,6 +1,6 @@
 import React from 'react';
 import { Youtube, Facebook, Instagram } from 'lucide-react';
-import tomiIcon from '../assets/images/tomi-icon.svg';
+import tomiLogoWhite from '../assets/images/tomi-logo-white.svg';
 
 function Footer() {
   return (
@@ -13,9 +13,9 @@ function Footer() {
             {/* Logo and tagline - left side */}
             <div className="mb-8 md:mb-0 md:max-w-xs">
               <img
-                src={tomiIcon}
+                src={tomiLogoWhite}
                 alt=""
-                className="w-20 h-20 object-contain object-left"
+                className="h-12 mb-5 relative px-3 md:px-0"
               />
               <p className="text-gray-300">
                 Educación divertida y personalizada universalmente accesible
@@ -26,7 +26,7 @@ function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:w-1/2 md:ml-auto">
               {/* About Us */}
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-300">
+                <h3 className="text-xl font-semibold mb-4 text-gray-300 ">
                   Sobre nosotros
                 </h3>
                 <ul>
@@ -94,7 +94,7 @@ function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-700">
+          <div className="flex flex-col md:flex-row justify-between items-center bg-gray-700 rounded-lg p-8">
             <p className="text-gray-400 mb-4 md:mb-0">
               Copyright © 2024 TOMi, Inc.
             </p>

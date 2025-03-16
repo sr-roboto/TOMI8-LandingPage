@@ -1,18 +1,20 @@
 import React from 'react';
 import tomiIcon from '../assets/images/tomi-icon.svg';
+import tomiLogoText from '../assets/images/tomi-logo-text.svg';
 import { ChevronDown, Earth } from 'lucide-react';
 
 function NavBar() {
   return (
     <>
-      <div className="flex relative items-center justify-between max-w-[1140px] mx-auto pt-[35px] px-[15px] md:mb-[60px] ">
+      <div className="flex relative items-center justify-between max-w-[1140px] mx-auto pt-9 px-4 md:mb-16 mb-8">
         <ul className="flex gap-2 items-center ">
           <li>
             <div className="flex gap-2 justify-center items-center">
+              <img src={tomiIcon} alt="icono de tomi8" className="size-6" />
               <img
-                src={tomiIcon}
-                alt="icono de tomi8"
-                className=" h-25 w-25 "
+                src={tomiLogoText}
+                alt="texto de tomi8"
+                className="h-5 w-16 hidden md:block"
               />
             </div>
           </li>
