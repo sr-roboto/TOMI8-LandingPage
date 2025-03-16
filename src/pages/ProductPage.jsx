@@ -12,6 +12,9 @@ import tomi6 from '../assets/images/tomi-6.png';
 import tomi7 from '../assets/images/tomi-7.jpg';
 import tomi8 from '../assets/images/tomi-8.png';
 import tomi9 from '../assets/images/tomi-9.jpg';
+import compare from '../assets/images/compare-icon.png';
+import tomiLt from '../assets/images/tomi8-lt.png';
+import tomiStd from '../assets/images/tomi8-std.png';
 
 function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -73,7 +76,6 @@ function ProductPage() {
               <ChevronRight className="w-6 h-6" color="#5801FF" />
             </button>
           </div>
-
           {/* Navegacion */}
           <div className="mt-4 flex justify-center gap-2 overflow-x-auto">
             {productImages.map((img, idx) => (
@@ -95,7 +97,97 @@ function ProductPage() {
             ))}
           </div>
 
-          <div className="flex flex-col-reverse lg:flex-row">
+          <div className="block lg:hidden">
+            {/* Producto Info Mobile */}
+            <div className="shrink-0 text-blue-black lg:block ">
+              <div className="border-0 border-[#A6A7B0] lg:border rounded-lg pt-11 pb-5 md:px-5 lg:px-9 lg:min-w-[460px] ">
+                <h1 className="text-4xl font-bold mb-6">
+                  TOMi8, todo en uno para la educación
+                </h1>
+                <div className="text-5xl font-medium">
+                  {selectedStorage === 'LT' ? '$790.000 ARS' : '$990.000 ARS'}
+                </div>
+                <p className="text-sm text-gray-600 mb-6">IVA Incluido</p>
+                <div className="flex items-center gap-5 mb-8">
+                  <div className="flex items-center gap-2 rounded-lg bg-blue-100 p-1 ">
+                    <ShoppingCart className="w-6 h-6" />
+                    <span>Envío gratis</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <img
+                      src="https://flagcdn.com/w20/ar.png"
+                      alt="Argentina flag"
+                      className="w-5"
+                    />
+                    <span className="font-bold text-[#5800FF]">ARG</span>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="font-medium mb-4">
+                    Almacenamiento. ¿Cuánto espacio necesitas?
+                  </h3>
+                  <div className="space-y-3">
+                    <button
+                      className={`btn-ghost cursor-pointer w-full py-3 px-4 rounded-lg border ${
+                        selectedStorage === 'LT'
+                          ? 'border-purple-600'
+                          : 'border-gray-300'
+                      }`}
+                      onClick={() => setSelectedStorage('LT')}
+                    >
+                      TOMi8 LT 4GB / 64GB
+                    </button>
+                    <button
+                      className={`btn-ghost cursor-pointer w-full py-3 px-4 rounded-lg border ${
+                        selectedStorage === 'STD'
+                          ? 'border-purple-600'
+                          : 'border-gray-300'
+                      }`}
+                      onClick={() => setSelectedStorage('STD')}
+                    >
+                      TOMi8 STD 4GB / 128GB
+                    </button>
+                  </div>
+                </div>
+                <div className="border-t border-[#A6A7B0] pt-[25px] mb-[20px]">
+                  <div className="flex flex-col items-center border border-[#A6A7B0] rounded-[10px] p-[25px] max-w-full mx-auto border-t ">
+                    <div className="flex gap-2 items-center justify-center px-[25px] mb-[25px]">
+                      <div className="translate-0">
+                        Distribuidor autorizado:
+                      </div>
+                      <img
+                        src={aulasAmigasLogo}
+                        alt="Aulas Amigas Logo"
+                        className="h-13"
+                      />
+                    </div>
+                    <button className="btn-ghost cursor-pointer rounded-4xl min-w-[250px] md:min-w-[335px] bg-[#5800FF] text-white py-2 font-medium hover:bg-[#4600CB] transition-colors">
+                      Comprar ahora
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4 pt-5 justify-center items-center mb-[35px] md:flex-row lg:mb-[0px] lg:gap-2 ">
+                  <div className="flex items-center">
+                    <Lock className="inline h-4" />
+
+                    <span className="text-gray-600">Compra segura</span>
+                  </div>
+                  <img
+                    src={wompiIcon}
+                    alt="Wompi Logo"
+                    className="h-4 inline "
+                  />
+                  <a href="#" className="text-purple-600 font-bold underline">
+                    ¿Necesitas asesoría?
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid *:grid-cols-3 gap-2 mt-4 overflow-x-auto">
             {/* Descripción */}
             <div className="mt-6 flex flex-col order-last lg:order-none ">
               <div
@@ -479,7 +571,7 @@ function ProductPage() {
         </div>
 
         {/* Producto Info */}
-        <div className="shrink-0 text-blue-black lg:block">
+        <div className="shrink-0 text-blue-black lg:block hidden ">
           <div className="border-0 border-[#A6A7B0] lg:border rounded-lg pt-11 pb-5 md:px-5 lg:px-9 lg:min-w-[460px] ">
             <h1 className="text-4xl font-bold mb-6">
               TOMi8, todo en uno para la educación
@@ -559,6 +651,150 @@ function ProductPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="overflow-x-auto scrollbar px-4 pt-16 pb-[25px]">
+        <table className="min-w-full text-blue-black border-separate border-spacing-0 px-4">
+          <thead>
+            <tr>
+              <th>
+                <div className="text-left px-[20px] md:px-[30px]">
+                  <img src={compare} alt="Compare Icon" className="h-16 w-16" />
+                  <p className="text-[20px] font-black max-w-[170px]">
+                    Compara los diferentes TOMi8
+                  </p>
+                </div>
+              </th>
+              <th>
+                <p className="text-[20px] font-black mb-[50px]">LT</p>
+                <img src={tomiLt} alt="" className="mx-auto" />
+              </th>
+              <th>
+                <p className="text-[20px] font-black mb-[50px]">STD</p>
+                <img src={tomiStd} alt="" className="mx-auto" />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Tipo de almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>SD</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>SSD</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>64gb</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>128gb</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  RAM
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>4GB</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>4GB</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Conexiones concurrentes AP
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>32</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>60</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Frecuencia 2.4GHz
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>30mtrs</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>50mtrs</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Tipo de almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>SD</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>SSD</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Tipo de almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>SD</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>SSD</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Tipo de almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>SD</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>SSD</span>
+              </td>
+            </tr>
+            <tr>
+              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+                <span className="font-bold max-w-[180px] inline-block">
+                  Tipo de almacenamiento
+                </span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r border-l border-x">
+                <span>SD</span>
+              </td>
+              <td className="relative text-center py-5 border-t border-r">
+                <span>SSD</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   );
