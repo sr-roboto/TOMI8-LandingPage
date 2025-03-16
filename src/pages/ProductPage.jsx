@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ShoppingCart, Lock } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ShoppingCart,
+  Lock,
+  CircleX,
+  CircleCheck,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import aulasAmigasLogo from '../assets/images/aulas-icon.png';
 import wompiIcon from '../assets/images/wompi-icon.png';
@@ -744,53 +751,53 @@ function ProductPage() {
             <tr>
               <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
                 <span className="font-bold max-w-[180px] inline-block">
-                  Tipo de almacenamiento
+                  Frecuencia 5.8 GHz
                 </span>
               </td>
               <td className="relative text-center py-5 border-t border-r border-l border-x">
-                <span>SD</span>
+                <CircleX className="inline h-5" />
               </td>
               <td className="relative text-center py-5 border-t border-r">
-                <span>SSD</span>
+                <span>30mtrs</span>
               </td>
             </tr>
             <tr>
               <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
                 <span className="font-bold max-w-[180px] inline-block">
-                  Tipo de almacenamiento
+                  Pizarra digital Autocalibrable
                 </span>
               </td>
               <td className="relative text-center py-5 border-t border-r border-l border-x">
-                <span>SD</span>
+                <CircleCheck className="inline h-5" />
               </td>
               <td className="relative text-center py-5 border-t border-r">
-                <span>SSD</span>
+                <CircleCheck className="inline h-5" />
               </td>
             </tr>
             <tr>
-              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+              <td className="relative border-t border-l  px-4 md:w-[320px] md:p-5   overflow-hidden">
                 <span className="font-bold max-w-[180px] inline-block">
-                  Tipo de almacenamiento
+                  Antenas de Amplificación
                 </span>
               </td>
-              <td className="relative text-center py-5 border-t border-r border-l border-x">
-                <span>SD</span>
+              <td className="relative text-center py-5 border-t border-r border-l border-x ">
+                <CircleX className="inline h-5" />
               </td>
-              <td className="relative text-center py-5 border-t border-r">
-                <span>SSD</span>
+              <td className="relative text-center py-5 border-t border-r ">
+                <CircleCheck className="inline h-5" />
               </td>
             </tr>
             <tr>
-              <td className="relative border-t border-l px-4 md:w-[320px] md:p-5   overflow-hidden">
+              <td className="relative border-t border-l border-b px-4 md:w-[320px] md:p-5   overflow-hidden">
                 <span className="font-bold max-w-[180px] inline-block">
-                  Tipo de almacenamiento
+                  Puerto Ethernet
                 </span>
               </td>
-              <td className="relative text-center py-5 border-t border-r border-l border-x">
-                <span>SD</span>
+              <td className="relative text-center py-5 border-t border-r border-l border-x border-b">
+                <CircleX className="inline h-5" />
               </td>
-              <td className="relative text-center py-5 border-t border-r">
-                <span>SSD</span>
+              <td className="relative text-center py-5 border-t border-r border-b">
+                <CircleCheck className="inline h-5" />
               </td>
             </tr>
           </tbody>
