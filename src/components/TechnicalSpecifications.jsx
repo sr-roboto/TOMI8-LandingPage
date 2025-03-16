@@ -49,7 +49,7 @@ const TechnicalSpecifications = ({ openSections, toggleCollapse }) => {
 
   return (
     <div
-      className={`collapse collapse-arrow cursor-pointer bg-base-100 rounded-none border-t border-[#A6A7B0] pt-6 mb-5 ${
+      className={`collapse collapse-arrow cursor-pointer bg-base-100 rounded-none border-t border-gray-400 pt-6 mb-5 ${
         openSections['especificaciones'] ? 'collapse-open' : 'collapse-close'
       }`}
     >
@@ -63,12 +63,12 @@ const TechnicalSpecifications = ({ openSections, toggleCollapse }) => {
       </div>
       <div className="collapse-content text-base">
         <div className="flex flex-1 pt-6">
-          <table className="flex-1 rounded-[5px] text-blue-black overflow-hidden">
+          <table className="flex-1 text-blue-black overflow-hidden rounded-lg">
             <tbody>
               {specs.map((spec, index) => (
                 <tr
                   key={index}
-                  className={index % 2 === 0 ? 'bg-gray-200' : ''}
+                  className={index % 2 === 0 ? 'bg-purple-100' : ''}
                 >
                   <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
                     {spec.name}

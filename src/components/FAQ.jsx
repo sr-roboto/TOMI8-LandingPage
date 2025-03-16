@@ -45,7 +45,7 @@ const FAQ = ({ openSections, toggleCollapse }) => {
 
   return (
     <div
-      className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-[#A6A7B0] pt-[25px] mb-[20px] ${
+      className={`collapse collapse-arrow bg-base-100 rounded-none border-t border-gray-400 pt-6 mb-5 ${
         openSections['preguntas'] ? 'collapse-open' : 'collapse-close'
       }`}
     >

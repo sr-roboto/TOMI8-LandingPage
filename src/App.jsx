@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import Navbar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProductPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

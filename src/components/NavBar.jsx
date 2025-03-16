@@ -1,5 +1,5 @@
 import React from 'react';
-import tomiIcon from '../assets/tomi-icon.svg';
+import tomiIcon from '../assets/images/tomi-icon.svg';
 import { ChevronDown, Earth } from 'lucide-react';
 
 function NavBar() {

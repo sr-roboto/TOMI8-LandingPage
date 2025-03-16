@@ -12,7 +12,7 @@ const ProductDescription = ({ openSections, toggleCollapse }) => {
         name="my-accordion-2"
         onClick={() => toggleCollapse('descripcion')}
       />
-      <div className="collapse-title font-medium text-md md:text-2xl">
+      <div className="collapse-title font-medium text-lg md:text-2xl">
         Descripción
       </div>
       <div className="collapse-content text-base">
