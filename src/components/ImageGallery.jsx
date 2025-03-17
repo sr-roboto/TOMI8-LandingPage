@@ -14,7 +14,7 @@ const ImageGallery = ({
         <img
           src={productImages[selectedImage]}
           alt={`Product view ${selectedImage + 1}`}
-          className="w-full h-full object-cover rounded-lg"
+          className="w-[600px] h-[468px] object-cover rounded-lg"
         />
         <button
           className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
@@ -33,16 +33,20 @@ const ImageGallery = ({
         {productImages.map((img, idx) => (
           <button
             key={idx}
-            className={`size-[12px] border rounded-full overflow-hidden md:size-auto md:rounded-md ${
-              selectedImage === idx ? 'border-purple-600' : 'border-[#E8E8EB]'
-            }`}
+            className={`
+        size-[12px] border rounded-full overflow-hidden 
+        md:w-16 md:h-16 md:rounded-md md:flex md:items-center md:justify-center
+        ${selectedImage === idx ? 'border-purple-600' : 'border-[#E8E8EB]'}
+      `}
             onClick={() => setSelectedImage(idx)}
           >
-            <img
-              src={img}
-              alt={`Product view ${idx + 1}`}
-              className="hidden md:block"
-            />
+            <div className="hidden md:block md:w-16 md:h-16 md:relative">
+              <img
+                src={img}
+                alt={`Product view ${idx + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
           </button>
         ))}
       </div>

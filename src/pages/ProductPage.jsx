@@ -17,6 +17,8 @@ import tomi6 from '../assets/images/tomi-6.png';
 import tomi7 from '../assets/images/tomi-7.jpg';
 import tomi8 from '../assets/images/tomi-8.png';
 import tomi9 from '../assets/images/tomi-9.jpg';
+import QueEsTomi from '../assets/images/que-es-tomi.jpeg';
+import ComboTomi from '../assets/images/combo-tomi.jpeg';
 import aulasAmigasLogo from '../assets/images/aulas-icon.png';
 import wompiIcon from '../assets/images/wompi-icon.png';
 import compare from '../assets/images/compare-icon.png';
@@ -31,9 +33,11 @@ function ProductPage() {
   const productImages = [
     tomi1,
     tomi2,
+    QueEsTomi,
     tomi3,
     tomi4,
     tomi5,
+    ComboTomi,
     tomi6,
     tomi7,
     tomi8,
