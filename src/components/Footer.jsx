@@ -12,7 +12,7 @@ function Footer() {
             target="_blank"
             className="flex justify-center text-2xl text-green-600 font-bold underline hover:text-green-700"
           >
-            Ver Video Presentación TOMIi8
+            Ver Video Presentación TOMi8
           </a>
           <img src={Tomi8Banner} alt="" />
         </div>
