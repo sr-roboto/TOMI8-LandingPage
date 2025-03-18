@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Lock } from 'lucide-react';
+import { ShoppingCart, Lock, Info, MessageCircleMore } from 'lucide-react';
 
 const ProductInfo = ({
   selectedStorage,
@@ -18,10 +18,10 @@ const ProductInfo = ({
         </div>
         <p className="text-sm text-gray-600 mb-6">IVA Incluido</p>
         <div className="flex items-center gap-5 mb-8">
-          <div className="flex items-center gap-2 rounded-lg bg-blue-100 p-1">
+          {/* <div className="flex items-center gap-2 rounded-lg bg-blue-100 p-1">
             <ShoppingCart className="w-6 h-6" />
             <span>Envío gratis</span>
-          </div>
+          </div> */}
           <div className="flex items-center gap-1">
             <img
               src="https://flagcdn.com/w20/ar.png"
@@ -89,13 +89,19 @@ const ProductInfo = ({
 
         <div className="flex flex-col gap-4 pt-5 justify-center items-center mb-[35px] md:flex-row lg:mb-[0px] lg:gap-2">
           <div className="flex items-center">
-            <Lock className="inline h-4" />
-            <span className="text-gray-600">Compra segura</span>
+            <a
+              href="https://www.tomiargentina.com.ar/"
+              target="_blank"
+              className="text-blue-600 hover:text-blue-700 font-bold underline"
+            >
+              <Info className="inline h-5" />
+              <span className="">Mas información</span>
+            </a>
           </div>
-          <img src={wompiIcon} alt="Wompi Logo" className="h-4 inline" />
-          <a href="#" className="text-purple-600 font-bold underline">
-            ¿Necesitas asesoría?
-          </a>
+          <div className="text-green-600 cursor-pointer hover:text-green-700 font-bold underline">
+            <MessageCircleMore className="inline h-5" />
+            <span>+54911-4300-0057</span>
+          </div>
         </div>
       </div>
     </div>
