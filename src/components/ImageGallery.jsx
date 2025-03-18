@@ -10,9 +10,28 @@ const ImageGallery = ({
 }) => {
   // Referencias y estados para el deslizamiento
   const scrollContainerRef = useRef(null);
+  const thumbnailRefs = useRef([]); // Array de referencias para cada miniatura
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Inicializar array de refs
+  useEffect(() => {
+    thumbnailRefs.current = Array(productImages.length)
+      .fill()
+      .map((_, i) => thumbnailRefs.current[i] || React.createRef());
+  }, [productImages.length]);
+
+  // Desplazar automáticamente a la miniatura seleccionada
+  useEffect(() => {
+    if (thumbnailRefs.current[selectedImage]?.current) {
+      thumbnailRefs.current[selectedImage].current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [selectedImage]);
 
   // Funciones para manejar el deslizamiento con mouse/táctil
   const handleMouseDown = (e) => {
@@ -47,7 +66,7 @@ const ImageGallery = ({
   return (
     <div className="flex flex-col">
       <div className="flex relative items-center justify-center border border-[#E8E8EB] rounded-[5px] overflow-hidden mb-[20px] mx-auto md:h-[470px] max-w-[600px]">
-        {/* Código existente para mostrar imagen o video */}
+        {/* Código existente sin cambios */}
         {productImages[selectedImage].type === 'image' ? (
           <img
             src={productImages[selectedImage].src}
@@ -72,7 +91,6 @@ const ImageGallery = ({
           </div>
         )}
 
-        {/* Botones de navegación sin cambios */}
         <button
           className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
           onClick={handlePrev}
@@ -105,6 +123,7 @@ const ImageGallery = ({
         {productImages.map((item, idx) => (
           <button
             key={idx}
+            ref={thumbnailRefs.current[idx]} // Asignar referencia a cada botón
             className={`
               border rounded-md overflow-hidden flex-shrink-0
               w-16 h-16 flex items-center justify-center
@@ -121,7 +140,7 @@ const ImageGallery = ({
                 src={item.src}
                 alt={`Product view ${idx + 1}`}
                 className="w-full h-full object-cover"
-                draggable="false" /* Evitar que la imagen sea arrastrable */
+                draggable="false"
               />
               {item.type === 'video' && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
