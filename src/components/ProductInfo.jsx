@@ -4,8 +4,8 @@ import { ShoppingCart, Lock } from 'lucide-react';
 const ProductInfo = ({
   selectedStorage,
   setSelectedStorage,
-  aulasAmigasLogo,
   wompiIcon,
+  authorizedDistributors,
 }) => {
   return (
     <div className="shrink-0 text-blue-black">
@@ -59,15 +59,27 @@ const ProductInfo = ({
             </button>
           </div>
         </div>
+
         <div className="border-t border-[#A6A7B0] pt-[25px] mb-[20px]">
-          <div className="flex flex-col items-center border border-[#A6A7B0] rounded-[10px] p-[25px] max-w-full mx-auto border-t">
-            <div className="flex gap-2 items-center justify-center px-[25px] mb-[25px]">
-              <div className="translate-0">Distribuidor autorizado:</div>
-              <img
-                src={aulasAmigasLogo}
-                alt="Aulas Amigas Logo"
-                className="h-13"
-              />
+          <div className="flex flex-col items-center border border-[#A6A7B0] rounded-[10px] p-[25px] max-w-full mx-auto">
+            <div className="w-full mb-[25px]">
+              <div className="text-center mb-3">
+                Distribuidores autorizados:
+              </div>
+              <div className="flex flex-wrap gap-4 justify-center items-center">
+                {authorizedDistributors.map((distributor) => (
+                  <div
+                    key={distributor.id}
+                    className="flex items-center justify-center"
+                  >
+                    <img
+                      src={distributor.logo}
+                      alt={`${distributor.name} Logo`}
+                      className="max-h-[60px] object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             <button className="btn-ghost cursor-pointer rounded-4xl min-w-[250px] md:min-w-[335px] bg-[#5800FF] text-white py-2 font-medium hover:bg-[#4600CB] transition-colors">
               Comprar ahora

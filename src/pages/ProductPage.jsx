@@ -25,11 +25,38 @@ import wompiIcon from '../assets/images/wompi-icon.png';
 import compare from '../assets/images/compare-icon.png';
 import tomiLt from '../assets/images/tomi8-lt.png';
 import tomiStd from '../assets/images/tomi8-std.png';
+import LaClaseDigitalLogo from '../assets/images/la-clase-digital-logo.svg';
+import CentroInnovacionEducativa from '../assets/images/centro-innovacion-educativa.svg';
+import FormosaIcon from '../assets/images/formosa-icon.png';
+import AulaExpertaLogo from '../assets/images/aula-experta-logo.svg';
 
 function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedStorage, setSelectedStorage] = useState('LT');
   const [openSections, setOpenSections] = useState({});
+
+  const authorizedDistributors = [
+    {
+      id: 1,
+      name: 'La Clase Digital',
+      logo: LaClaseDigitalLogo,
+    },
+    {
+      id: 2,
+      name: 'Centro de Innovación Educativa',
+      logo: CentroInnovacionEducativa,
+    },
+    {
+      id: 3,
+      name: 'Formosa',
+      logo: FormosaIcon,
+    },
+    {
+      id: 4,
+      name: 'Aula Experta',
+      logo: AulaExpertaLogo,
+    },
+  ];
 
   const productImages = [
     { src: tomi1, type: 'image' },
@@ -85,8 +112,8 @@ function ProductPage() {
             <ProductInfo
               selectedStorage={selectedStorage}
               setSelectedStorage={setSelectedStorage}
-              aulasAmigasLogo={aulasAmigasLogo}
               wompiIcon={wompiIcon}
+              authorizedDistributors={authorizedDistributors}
             />
           </div>
 
@@ -114,8 +141,8 @@ function ProductPage() {
           <ProductInfo
             selectedStorage={selectedStorage}
             setSelectedStorage={setSelectedStorage}
-            aulasAmigasLogo={aulasAmigasLogo}
             wompiIcon={wompiIcon}
+            authorizedDistributors={authorizedDistributors}
           />
         </div>
       </div>
