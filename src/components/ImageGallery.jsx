@@ -71,7 +71,7 @@ const ImageGallery = ({
           <img
             src={productImages[selectedImage].src}
             alt={`Product view ${selectedImage + 1}`}
-            className="w-[600px] h-[468px] object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-lg"
           />
         ) : (
           <div className="relative w-[600px] h-[468px]">
