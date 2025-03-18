@@ -117,23 +117,19 @@ function ProductPage() {
             />
           </div>
 
-          <div className="grid *:grid-cols-3 gap-2 mt-4 overflow-x-auto ">
-            <div className="mt-6 flex flex-col order-last lg:order-none">
-              <ProductDescription
-                openSections={openSections}
-                toggleCollapse={toggleCollapse}
-              />
+          {/* Esta es la sección corregida */}
+          <div className="mt-6">
+            <ProductDescription
+              openSections={openSections}
+              toggleCollapse={toggleCollapse}
+            />
 
-              <TechnicalSpecifications
-                openSections={openSections}
-                toggleCollapse={toggleCollapse}
-              />
+            <TechnicalSpecifications
+              openSections={openSections}
+              toggleCollapse={toggleCollapse}
+            />
 
-              <FAQ
-                openSections={openSections}
-                toggleCollapse={toggleCollapse}
-              />
-            </div>
+            <FAQ openSections={openSections} toggleCollapse={toggleCollapse} />
           </div>
         </div>
 

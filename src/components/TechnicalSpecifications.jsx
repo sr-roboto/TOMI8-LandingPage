@@ -62,18 +62,18 @@ const TechnicalSpecifications = ({ openSections, toggleCollapse }) => {
         Especificaciones técnicas
       </div>
       <div className="collapse-content text-base">
-        <div className="flex flex-1 pt-6">
-          <table className="flex-1 text-blue-black overflow-hidden rounded-lg">
+        <div className="pt-6 overflow-x-auto w-full">
+          <table className="w-full text-blue-black rounded-lg">
             <tbody>
               {specs.map((spec, index) => (
                 <tr
                   key={index}
                   className={index % 2 === 0 ? 'bg-purple-100' : ''}
                 >
-                  <td className="font-medium border-r border-white py-5 px-4 md:px-3 text-center whitespace-nowrap">
+                  <td className="font-medium border-r border-white py-3 md:py-5 px-3 md:px-4 text-left md:text-center align-top">
                     {spec.name}
                   </td>
-                  <td className="py-4 px-2 md:px-3 lg:px-5">{spec.value}</td>
+                  <td className="py-3 md:py-4 px-3 md:px-4">{spec.value}</td>
                 </tr>
               ))}
             </tbody>

@@ -9,7 +9,7 @@ const ProductInfo = ({
 }) => {
   return (
     <div className="shrink-0 text-blue-black">
-      <div className="border-0 border-[#A6A7B0] lg:border rounded-lg pt-11 pb-5 md:px-5 lg:px-9 lg:min-w-[460px]">
+      <div className="border-0 border-gray-400 lg:border rounded-lg pt-11 pb-5 md:px-5 lg:px-9 lg:min-w-[460px]">
         <h1 className="text-4xl font-bold mb-6">
           TOMi8, todo en uno para la educación
         </h1>
