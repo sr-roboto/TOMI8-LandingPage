@@ -17,8 +17,9 @@ import tomi6 from '../assets/images/tomi-6.png';
 import tomi7 from '../assets/images/tomi-7.jpg';
 import tomi8 from '../assets/images/tomi-8.png';
 import tomi9 from '../assets/images/tomi-9.jpg';
-import QueEsTomi from '../assets/images/que-es-tomi.jpeg';
-import ComboTomi from '../assets/images/combo-tomi.jpeg';
+import QueEsTomi from '../assets/images/que-es-tomi.jpg';
+import ComboTomi from '../assets/images/combo-tomi.jpg';
+import TomiVideo from '../assets/videos/tomi-video.mp4';
 import aulasAmigasLogo from '../assets/images/aulas-icon.png';
 import wompiIcon from '../assets/images/wompi-icon.png';
 import compare from '../assets/images/compare-icon.png';
@@ -31,17 +32,22 @@ function ProductPage() {
   const [openSections, setOpenSections] = useState({});
 
   const productImages = [
-    tomi1,
-    tomi2,
-    QueEsTomi,
-    tomi3,
-    tomi4,
-    tomi5,
-    ComboTomi,
-    tomi6,
-    tomi7,
-    tomi8,
-    tomi9,
+    { src: tomi1, type: 'image' },
+    { src: tomi2, type: 'image' },
+    { src: QueEsTomi, type: 'image' },
+    { src: tomi3, type: 'image' },
+    { src: tomi4, type: 'image' },
+    { src: tomi5, type: 'image' },
+    { src: ComboTomi, type: 'image' },
+    { src: tomi6, type: 'image' },
+    { src: tomi7, type: 'image' },
+    { src: tomi8, type: 'image' },
+    { src: tomi9, type: 'image' },
+    {
+      src: TomiVideo, // Usar como miniatura
+      type: 'video',
+      videoSrc: TomiVideo, // Usar la variable importada directamente
+    },
   ];
 
   const handlePrev = () => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react'; // Añadir ícono de Play
 
 const ImageGallery = ({
   productImages,
@@ -11,11 +12,32 @@ const ImageGallery = ({
   return (
     <div className="flex flex-col">
       <div className="flex relative items-center justify-center border border-[#E8E8EB] rounded-[5px] overflow-hidden mb-[20px] mx-auto md:h-[470px] max-w-[600px]">
-        <img
-          src={productImages[selectedImage]}
-          alt={`Product view ${selectedImage + 1}`}
-          className="w-[600px] h-[468px] object-cover rounded-lg"
-        />
+        {/* Mostrar imagen o video según el tipo */}
+        {productImages[selectedImage].type === 'image' ? (
+          <img
+            src={productImages[selectedImage].src}
+            alt={`Product view ${selectedImage + 1}`}
+            className="w-[600px] h-[468px] object-cover rounded-lg"
+          />
+        ) : (
+          <div className="relative w-[600px] h-[468px]">
+            <video
+              controls
+              muted
+              preload="metadata"
+              className="w-full h-full object-cover rounded-lg"
+              poster={productImages[selectedImage].src}
+            >
+              <source
+                src={productImages[selectedImage].videoSrc}
+                type="video/mp4"
+              />
+              Tu navegador no soporta el elemento de video.
+            </video>
+          </div>
+        )}
+
+        {/* Botones de navegación */}
         <button
           className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
           onClick={handlePrev}
@@ -29,23 +51,31 @@ const ImageGallery = ({
           <ChevronRight className="w-6 h-6" color="#5801FF" />
         </button>
       </div>
+
+      {/* Miniaturas */}
       <div className="mt-4 flex justify-center gap-2 overflow-x-auto">
-        {productImages.map((img, idx) => (
+        {productImages.map((item, idx) => (
           <button
             key={idx}
             className={`
-        size-[12px] border rounded-full overflow-hidden 
-        md:w-16 md:h-16 md:rounded-md md:flex md:items-center md:justify-center
+        border rounded-md overflow-hidden aspect-square
+        md:w-16 md:h-16 flex items-center justify-center
         ${selectedImage === idx ? 'border-purple-600' : 'border-[#E8E8EB]'}
       `}
             onClick={() => setSelectedImage(idx)}
           >
-            <div className="hidden md:block md:w-16 md:h-16 md:relative">
+            <div className="w-full h-full aspect-square relative">
               <img
-                src={img}
+                src={item.src}
                 alt={`Product view ${idx + 1}`}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-cover"
               />
+              {/* Mostrar ícono de play en miniaturas de video */}
+              {item.type === 'video' && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                  <Play className="text-white" />
+                </div>
+              )}
             </div>
           </button>
         ))}
