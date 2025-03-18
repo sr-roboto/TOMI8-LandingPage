@@ -8,21 +8,21 @@ const ImageGallery = ({
   handlePrev,
   handleNext,
 }) => {
-  // Referencias y estados para el deslizamiento
+  // Referencias y estados para el deslizamiento (mantener igual)
   const scrollContainerRef = useRef(null);
-  const thumbnailRefs = useRef([]); // Array de referencias para cada miniatura
+  const thumbnailRefs = useRef([]);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Inicializar array de refs
+  // Inicializar array de refs (mantener igual)
   useEffect(() => {
     thumbnailRefs.current = Array(productImages.length)
       .fill()
       .map((_, i) => thumbnailRefs.current[i] || React.createRef());
   }, [productImages.length]);
 
-  // Desplazar automáticamente a la miniatura seleccionada
+  // Desplazar automáticamente a la miniatura seleccionada (mantener igual)
   useEffect(() => {
     if (thumbnailRefs.current[selectedImage]?.current) {
       thumbnailRefs.current[selectedImage].current.scrollIntoView({
@@ -33,7 +33,7 @@ const ImageGallery = ({
     }
   }, [selectedImage]);
 
-  // Funciones para manejar el deslizamiento con mouse/táctil
+  // Funciones para manejar el deslizamiento (mantener igual)
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
@@ -44,7 +44,7 @@ const ImageGallery = ({
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Multiplicador de velocidad
+    const walk = (x - startX) * 2;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -52,7 +52,7 @@ const ImageGallery = ({
     setIsDragging(false);
   };
 
-  // Limpiar eventos cuando se desmonta el componente
+  // Limpiar eventos cuando se desmonta el componente (mantener igual)
   useEffect(() => {
     document.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('mouseleave', handleMouseUp);
@@ -65,6 +65,7 @@ const ImageGallery = ({
 
   return (
     <div className="flex flex-col">
+      {/* Imagen o video principal (mantener igual) */}
       <div className="flex relative items-center justify-center border border-[#E8E8EB] rounded-[5px] overflow-hidden mb-[20px] mx-auto md:h-[470px] max-w-[600px]">
         {productImages[selectedImage].type === 'image' ? (
           <img
@@ -90,6 +91,7 @@ const ImageGallery = ({
           </div>
         )}
 
+        {/* Botones de navegación (mantener igual) */}
         <button
           className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
           onClick={handlePrev}
@@ -104,10 +106,24 @@ const ImageGallery = ({
         </button>
       </div>
 
-      {/* Contenedor de miniaturas modificado */}
+      {/* CÍRCULOS para móvil */}
+      <div className="flex justify-center gap-2 mt-4 md:hidden">
+        {productImages.map((_, idx) => (
+          <button
+            key={`mobile-${idx}`}
+            className={`w-4 h-4 rounded-full border ${
+              selectedImage === idx ? 'border-purple-600' : 'border-gray-300'
+            }`}
+            onClick={() => setSelectedImage(idx)}
+            aria-label={`Ver imagen ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* MINIATURAS para tablet/desktop - oculto en móvil */}
       <div
         ref={scrollContainerRef}
-        className="mt-4 flex gap-2 overflow-x-auto pb-2 max-w-full scrollbar-hide cursor-grab"
+        className="hidden md:flex mt-4 gap-2 overflow-x-auto pb-2 max-w-full scrollbar-hide cursor-grab"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -122,7 +138,7 @@ const ImageGallery = ({
         {productImages.map((item, idx) => (
           <button
             key={idx}
-            ref={thumbnailRefs.current[idx]} // Asignar referencia a cada botón
+            ref={thumbnailRefs.current[idx]}
             className={`
               border rounded-md overflow-hidden flex-shrink-0
               w-16 h-16 flex items-center justify-center
