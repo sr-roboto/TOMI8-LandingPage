@@ -1,6 +1,4 @@
 import React from 'react';
-import { Youtube, Facebook, Instagram } from 'lucide-react';
-import tomiLogoWhite from '../assets/images/tomi-logo-white.svg';
 import Tomi8Banner from '../assets/images/tomi8-banner.png';
 
 function Footer() {
