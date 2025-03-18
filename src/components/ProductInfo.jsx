@@ -98,10 +98,15 @@ const ProductInfo = ({
               <span className="">Mas información</span>
             </a>
           </div>
-          <div className="text-green-600 cursor-pointer hover:text-green-700 font-bold underline">
+          <a
+            href="https://wa.me/5491143000057"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-600 cursor-pointer hover:text-green-700 font-bold underline"
+          >
             <MessageCircleMore className="inline h-5" />
             <span>+54911-4300-0057</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>
