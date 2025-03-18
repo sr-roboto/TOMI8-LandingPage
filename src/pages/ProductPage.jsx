@@ -60,14 +60,14 @@ function ProductPage() {
 
   const productImages = [
     { src: tomi1, type: 'image' },
-    { src: tomi2, type: 'image' },
+    //{ src: tomi2, type: 'image' },
     { src: QueEsTomi, type: 'image' },
     { src: tomi3, type: 'image' },
     { src: tomi4, type: 'image' },
-    { src: tomi5, type: 'image' },
+    // { src: tomi5, type: 'image' },
     { src: ComboTomi, type: 'image' },
-    { src: tomi6, type: 'image' },
-    { src: tomi7, type: 'image' },
+    // { src: tomi6, type: 'image' },
+    // { src: tomi7, type: 'image' },
     { src: tomi8, type: 'image' },
     { src: tomi9, type: 'image' },
     {
