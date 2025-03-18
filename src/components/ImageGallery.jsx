@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react'; // Añadir ícono de Play
+import React, { useRef, useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const ImageGallery = ({
   productImages,
@@ -9,10 +8,46 @@ const ImageGallery = ({
   handlePrev,
   handleNext,
 }) => {
+  // Referencias y estados para el deslizamiento
+  const scrollContainerRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Funciones para manejar el deslizamiento con mouse/táctil
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Multiplicador de velocidad
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Limpiar eventos cuando se desmonta el componente
+  useEffect(() => {
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mouseleave', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mouseleave', handleMouseUp);
+    };
+  }, [isDragging]);
+
   return (
     <div className="flex flex-col">
       <div className="flex relative items-center justify-center border border-[#E8E8EB] rounded-[5px] overflow-hidden mb-[20px] mx-auto md:h-[470px] max-w-[600px]">
-        {/* Mostrar imagen o video según el tipo */}
+        {/* Código existente para mostrar imagen o video */}
         {productImages[selectedImage].type === 'image' ? (
           <img
             src={productImages[selectedImage].src}
@@ -37,7 +72,7 @@ const ImageGallery = ({
           </div>
         )}
 
-        {/* Botones de navegación */}
+        {/* Botones de navegación sin cambios */}
         <button
           className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 p-2 rounded-full shadow-lg"
           onClick={handlePrev}
@@ -52,16 +87,33 @@ const ImageGallery = ({
         </button>
       </div>
 
-      {/* Miniaturas */}
-      <div className="mt-4 flex justify-center gap-2 overflow-x-auto">
+      {/* Contenedor de miniaturas modificado */}
+      <div
+        ref={scrollContainerRef}
+        className="mt-4 flex gap-2 overflow-x-auto pb-2 max-w-full scrollbar-hide cursor-grab"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
         {productImages.map((item, idx) => (
           <button
             key={idx}
             className={`
-        border rounded-md overflow-hidden aspect-square
-        md:w-16 md:h-16 flex items-center justify-center
-        ${selectedImage === idx ? 'border-purple-600' : 'border-[#E8E8EB]'}
-      `}
+              border rounded-md overflow-hidden flex-shrink-0
+              w-16 h-16 flex items-center justify-center
+              ${
+                selectedImage === idx
+                  ? 'border-2 border-purple-600'
+                  : 'border border-[#E8E8EB]'
+              }
+            `}
             onClick={() => setSelectedImage(idx)}
           >
             <div className="w-full h-full aspect-square relative">
@@ -69,8 +121,8 @@ const ImageGallery = ({
                 src={item.src}
                 alt={`Product view ${idx + 1}`}
                 className="w-full h-full object-cover"
+                draggable="false" /* Evitar que la imagen sea arrastrable */
               />
-              {/* Mostrar ícono de play en miniaturas de video */}
               {item.type === 'video' && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
                   <Play className="text-white" />
