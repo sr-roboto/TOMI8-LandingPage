@@ -66,7 +66,6 @@ const ImageGallery = ({
   return (
     <div className="flex flex-col">
       <div className="flex relative items-center justify-center border border-[#E8E8EB] rounded-[5px] overflow-hidden mb-[20px] mx-auto md:h-[470px] max-w-[600px]">
-        {/* Código existente sin cambios */}
         {productImages[selectedImage].type === 'image' ? (
           <img
             src={productImages[selectedImage].src}
@@ -74,7 +73,7 @@ const ImageGallery = ({
             className="w-full h-full object-cover rounded-lg"
           />
         ) : (
-          <div className="relative w-[600px] h-[468px]">
+          <div className="relative w-full h-full min-h-[250px]">
             <video
               controls
               muted
