@@ -66,7 +66,7 @@ function ProductPage() {
     { src: tomi4, type: 'image' },
     // { src: tomi5, type: 'image' },
     { src: ComboTomi, type: 'image' },
-    // { src: tomi6, type: 'image' },
+    { src: tomi6, type: 'image' },
     // { src: tomi7, type: 'image' },
     { src: tomi8, type: 'image' },
     { src: tomi9, type: 'image' },
