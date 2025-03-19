@@ -14,7 +14,15 @@ const ProductInfo = ({
           TOMi8, todo en uno para la educación
         </h1>
         <div className="text-5xl font-medium">
-          {selectedStorage === 'LT' ? '$790.000 ARS' : '$990.000 ARS'}
+          {selectedStorage === 'LT' ? (
+            <span className="flex gap-2 items-center">
+              $790.000 ARS <span className="text-2xl">($590 US)</span>
+            </span>
+          ) : (
+            <span>
+              $990.000 ARS <span className="text-2xl">($750 US)</span>
+            </span>
+          )}
         </div>
         <p className="text-sm text-gray-600 mb-6">IVA Incluido</p>
         <div className="flex items-center gap-5 mb-8">
