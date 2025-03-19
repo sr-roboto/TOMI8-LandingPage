@@ -15,12 +15,14 @@ const ProductInfo = ({
         </h1>
         <div className="text-5xl font-medium">
           {selectedStorage === 'LT' ? (
-            <span className="flex gap-2 items-center">
-              $790.000 ARS <span className="text-2xl">(U$S 590)</span>
+            <span className="flex flex-col md:flex-row md:gap-2 md:items-center">
+              <span>$790.000 ARS</span>
+              <span className="text-2xl md:text-3xl">(U$S 590)</span>
             </span>
           ) : (
-            <span className="flex gap-2 items-center">
-              $990.000 ARS <span className="text-2xl">(U$S 750)</span>
+            <span className="flex flex-col md:flex-row md:gap-2 md:items-center">
+              <span>$990.000 ARS</span>
+              <span className="text-2xl md:text-3xl">(U$S 750)</span>
             </span>
           )}
         </div>
