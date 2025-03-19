@@ -16,11 +16,11 @@ const ProductInfo = ({
         <div className="text-5xl font-medium">
           {selectedStorage === 'LT' ? (
             <span className="flex gap-2 items-center">
-              $790.000 ARS <span className="text-2xl">($590 US)</span>
+              $790.000 ARS <span className="text-2xl">(U$S 590)</span>
             </span>
           ) : (
-            <span>
-              $990.000 ARS <span className="text-2xl">($750 US)</span>
+            <span className="flex gap-2 items-center">
+              $990.000 ARS <span className="text-2xl">(U$S 750)</span>
             </span>
           )}
         </div>
