@@ -17,12 +17,10 @@ const ProductInfo = ({
           {selectedStorage === 'LT' ? (
             <span className="flex flex-col md:flex-row md:gap-2 md:items-center">
               <span>$790.000 ARS</span>
-              <span className="text-2xl md:text-3xl">(U$S 590)</span>
             </span>
           ) : (
             <span className="flex flex-col md:flex-row md:gap-2 md:items-center">
               <span>$990.000 ARS</span>
-              <span className="text-2xl md:text-3xl">(U$S 750)</span>
             </span>
           )}
         </div>
